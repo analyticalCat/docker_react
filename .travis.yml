@@ -1,0 +1,9 @@
+sudo: required #required to use docker
+srevices: 
+  - docker
+
+before_install:
+  - docker build -t jess/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true jess/docker-react npm run test -- --coverage
